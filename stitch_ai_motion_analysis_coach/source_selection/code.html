@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Source Input - Performance Lab</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&amp;family=Space+Grotesk:wght@600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config from Design System -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#c3f400",
+                    "inverse-surface": "#e5e2e1",
+                    "on-surface-variant": "#c4c9ac",
+                    "secondary-fixed-dim": "#ffb59a",
+                    "inverse-on-surface": "#313030",
+                    "primary-container": "#c3f400",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#161e00",
+                    "on-primary-container": "#556d00",
+                    "on-surface": "#e5e2e1",
+                    "surface": "#131313",
+                    "on-tertiary-container": "#006f77",
+                    "on-tertiary-fixed": "#002022",
+                    "on-primary": "#283500",
+                    "surface-container-highest": "#353534",
+                    "tertiary-fixed": "#7df4ff",
+                    "error-container": "#93000a",
+                    "on-background": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "on-secondary-fixed-variant": "#802a00",
+                    "tertiary-container": "#7df4ff",
+                    "tertiary": "#ffffff",
+                    "outline-variant": "#444933",
+                    "surface-tint": "#abd600",
+                    "surface-dim": "#131313",
+                    "surface-variant": "#353534",
+                    "outline": "#8e9379",
+                    "error": "#ffb4ab",
+                    "inverse-primary": "#506600",
+                    "primary": "#ffffff",
+                    "on-error": "#690005",
+                    "surface-container": "#201f1f",
+                    "surface-container-low": "#1c1b1b",
+                    "on-secondary-container": "#531900",
+                    "surface-bright": "#393939",
+                    "primary-fixed-dim": "#abd600",
+                    "on-primary-fixed-variant": "#3c4d00",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary": "#ffb59a",
+                    "surface-container-high": "#2a2a2a",
+                    "on-secondary": "#5a1b00",
+                    "secondary-fixed": "#ffdbce",
+                    "secondary-container": "#ff5e07",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "on-secondary-fixed": "#370e00",
+                    "background": "#131313",
+                    "on-tertiary": "#00363a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "40px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "margin": "20px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Lexend"],
+                    "label-caps": ["Lexend"],
+                    "metric-huge": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "display-xl": ["Space Grotesk"],
+                    "body-md": ["Lexend"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "metric-huge": ["64px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen pt-16 pb-24 md:pb-16 flex flex-col">
+<!-- TopAppBar JSON Component -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-black docked full-width top-0 border-b border-zinc-900 flat no shadows">
+<div class="flex items-center gap-4">
+<button class="md:hidden flex items-center justify-center text-lime-400 hover:text-lime-300 active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-xl font-black text-lime-400 italic">PERFORMANCE LAB</span>
+</div>
+<!-- Desktop Navigation Cluster (Hidden on Mobile) -->
+<div class="hidden md:flex items-center gap-8 h-full">
+<a class="h-full flex items-center font-['Space_Grotesk'] text-[14px] font-bold tracking-widest text-lime-400 border-b-2 border-lime-400" href="#">TRACK</a>
+<a class="h-full flex items-center font-['Space_Grotesk'] text-[14px] font-bold tracking-widest text-zinc-500 hover:text-lime-300 active:scale-95 duration-100" href="#">LOGS</a>
+<a class="h-full flex items-center font-['Space_Grotesk'] text-[14px] font-bold tracking-widest text-zinc-500 hover:text-lime-300 active:scale-95 duration-100" href="#">DRILLS</a>
+<a class="h-full flex items-center font-['Space_Grotesk'] text-[14px] font-bold tracking-widest text-zinc-500 hover:text-lime-300 active:scale-95 duration-100" href="#">PROFILE</a>
+</div>
+<div class="w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 overflow-hidden flex-shrink-0 cursor-pointer active:scale-95 duration-100">
+<img alt="User Athlete" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0PNp0zBYYhPClugNVbG8r-P2K53TSnC4qpl3T9AaRYvFc1Cd1W6zH6Bcpf_hI2g97DH9_ubOKmM_gWOrrSlLXSCF8msvv7gmt1MNrz_u-ATQs37v2KsRdVfsWYySnYT9QPKxoZcfnvJE5d_uNkV46_x5acVut_gMP6lj13LEKX7r1qgXSt18C0Kjp7CDo3BmPawL0fm151NBlkqDFqr9HaaBKpF-2GEAirek-LB_4vIC8IT30mwh5IcLqFZEvMwQKJh9HRpsJtGg"/>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow container mx-auto px-margin pt-xl max-w-5xl">
+<!-- Header Section -->
+<header class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Source Input</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Record a new movement or upload a pre-recorded video for analysis.</p>
+</header>
+<!-- Input Methods Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Card 1: Upload Video -->
+<button class="group flex flex-col text-left bg-surface rounded-xl p-lg border border-surface-variant hover:border-primary-fixed hover:bg-surface-container-high transition-all duration-200 min-h-[280px] relative overflow-hidden">
+<!-- Subtle gradient overlay on hover -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary-fixed/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-surface-container mb-auto group-hover:bg-primary-fixed group-hover:text-on-primary-fixed transition-colors text-on-surface">
+<span class="material-symbols-outlined text-3xl" data-icon="video_library" data-weight="fill" style="font-variation-settings: 'FILL' 1;">video_library</span>
+</div>
+<div class="relative z-10 mt-xl">
+<div class="font-label-caps text-label-caps text-primary-fixed mb-sm">LOCAL STORAGE</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Upload Video</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Select an existing file from your device gallery or file system for post-session breakdown.</p>
+</div>
+</button>
+<!-- Card 2: Real-time Session -->
+<button class="group flex flex-col text-left bg-surface rounded-xl p-lg border border-surface-variant hover:border-secondary-container hover:bg-surface-container-high transition-all duration-200 min-h-[280px] relative overflow-hidden">
+<!-- Subtle gradient overlay on hover -->
+<div class="absolute inset-0 bg-gradient-to-br from-secondary-container/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-surface-container mb-auto group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors text-on-surface relative">
+<span class="material-symbols-outlined text-3xl" data-icon="fiber_smart_record" data-weight="fill" style="font-variation-settings: 'FILL' 1;">fiber_smart_record</span>
+<!-- Live indicator dot -->
+<span class="absolute top-0 right-0 w-4 h-4 bg-error rounded-full border-2 border-surface group-hover:border-secondary-container"></span>
+</div>
+<div class="relative z-10 mt-xl">
+<div class="font-label-caps text-label-caps text-secondary-container mb-sm">LIVE CAPTURE</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Real-time Session</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Activate device camera to capture movement directly into the performance engine.</p>
+</div>
+</button>
+</div>
+</main>
+<!-- BottomNavBar JSON Component (Visible only on Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe bg-[#121212] docked full-width bottom-0 border-t border-zinc-800 flat no shadows">
+<!-- TRACK (Active) -->
+<a class="flex flex-col items-center justify-center bg-lime-400 text-black rounded-none px-4 py-1 w-full h-full active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="shutter_speed" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shutter_speed</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold tracking-widest">TRACK</span>
+</a>
+<!-- LOGS (Inactive) -->
+<a class="flex flex-col items-center justify-center text-zinc-500 px-4 py-1 hover:bg-zinc-800 active:opacity-80 transition-all w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="analytics">analytics</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold tracking-widest">LOGS</span>
+</a>
+<!-- DRILLS (Inactive) -->
+<a class="flex flex-col items-center justify-center text-zinc-500 px-4 py-1 hover:bg-zinc-800 active:opacity-80 transition-all w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="fitness_center">fitness_center</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold tracking-widest">DRILLS</span>
+</a>
+<!-- PROFILE (Inactive) -->
+<a class="flex flex-col items-center justify-center text-zinc-500 px-4 py-1 hover:bg-zinc-800 active:opacity-80 transition-all w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="person">person</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold tracking-widest">PROFILE</span>
+</a>
+</nav>
+</body></html>

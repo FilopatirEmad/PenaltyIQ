@@ -1,0 +1,56 @@
+name: penaltyiq
+description: AI-powered soccer penalty kick biomechanical coaching app — Performance Lab UI.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # Navigation
+  go_router: ^14.1.4
+
+  # Networking
+  dio: ^5.4.3+1
+  path: ^1.9.0
+  file_picker: ^8.1.2
+
+  # Fonts
+  google_fonts: ^8.1.0
+
+  # Sensors (IMU)
+  sensors_plus: ^5.0.1
+
+  # Charts
+  fl_chart: ^0.68.0
+
+  # Serialisation
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.9.0
+
+  # Utilities
+  uuid: ^4.4.0
+  logger: ^2.3.0
+  dio_smart_retry: ^7.0.1
+  shared_preferences: ^2.5.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1
+  build_runner: ^2.4.11
+  freezed: ^2.5.2
+  json_serializable: ^6.8.0
+  riverpod_generator: ^2.4.0
+  mockito: ^5.4.4
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

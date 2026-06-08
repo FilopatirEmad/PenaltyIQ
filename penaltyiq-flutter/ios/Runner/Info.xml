@@ -1,0 +1,28 @@
+<!-- PenaltyIQ iOS Permissions -->
+<dict>
+    <!-- Camera usage description (required by App Store) -->
+    <key>NSCameraUsageDescription</key>
+    <string>PenaltyIQ needs camera access to record penalty kicks for biomechanical analysis.</string>
+
+    <!-- Microphone (required by camera plugin even if audio not recorded) -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>PenaltyIQ requires microphone access as part of the camera recording functionality.</string>
+
+    <!-- Motion sensors for IMU tilt gate [SPEC §1.7.1] -->
+    <key>NSMotionUsageDescription</key>
+    <string>PenaltyIQ uses the accelerometer to ensure the phone is level during recording, which is required for accurate biomechanical measurements.</string>
+
+    <!-- Photo library (saving recordings) -->
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>PenaltyIQ can save your recorded kick videos to your photo library.</string>
+
+    <!-- Lock to portrait orientation [SPEC §1.7.1] -->
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+
+    <!-- Minimum iOS version: 14.0 (sensors_plus requirement) -->
+    <key>MinimumOSVersion</key>
+    <string>14.0</string>
+</dict>

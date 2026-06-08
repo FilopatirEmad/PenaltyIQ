@@ -1,0 +1,51 @@
+<!-- PenaltyIQ Android Permissions -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Camera permission: for video recording [SPEC §1.1] -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Microphone: required by camera package (even if audio not used) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Internet: for API calls to FastAPI backend -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Sensors: for IMU accelerometer tilt gate [SPEC §1.7.1] -->
+    <!-- No explicit permission needed for accelerometer on Android -->
+
+    <!-- Storage: for saving recorded videos temporarily -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+
+    <!-- Camera feature requirement -->
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
+    <application
+        android:label="PenaltyIQ"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true">
+
+        <!-- Large heap for video frame processing -->
+        android:largeHeap="true"
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait">
+            <!-- Lock to portrait [SPEC §1.7.1] -->
+        </activity>
+    </application>
+</manifest>

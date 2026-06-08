@@ -1,0 +1,68 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: penaltyiq-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  penaltyiq-api:
+    build: ./penaltyiq-backend
+    image: penaltyiq-api:latest
+    container_name: penaltyiq-api
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=info
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+    volumes:
+      - ./penaltyiq-backend:/app
+
+    depends_on:
+      - redis
+
+    restart: unless-stopped
+
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  celery-worker:
+    build: ./penaltyiq-backend
+    container_name: penaltyiq-celery
+
+    command: celery -A workers.celery_worker worker --loglevel=info
+
+    environment:
+      - PYTHONUNBUFFERED=1
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+    volumes:
+      - ./penaltyiq-backend:/app
+
+    depends_on:
+      - redis
+
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: penaltyiq-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+
+    depends_on:
+      - penaltyiq-api
+
+    restart: unless-stopped
+    profiles:
+      - production

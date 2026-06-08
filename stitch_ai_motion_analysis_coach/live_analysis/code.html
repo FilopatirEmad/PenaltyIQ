@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Motion Tracking &amp; Feedback</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&amp;family=Space+Grotesk:wght@600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#c3f400",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface-variant": "#c4c9ac",
+                        "secondary-fixed-dim": "#ffb59a",
+                        "inverse-on-surface": "#313030",
+                        "primary-container": "#c3f400",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#161e00",
+                        "on-primary-container": "#556d00",
+                        "on-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "on-tertiary-container": "#006f77",
+                        "on-tertiary-fixed": "#002022",
+                        "on-primary": "#283500",
+                        "surface-container-highest": "#353534",
+                        "tertiary-fixed": "#7df4ff",
+                        "error-container": "#93000a",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-secondary-fixed-variant": "#802a00",
+                        "tertiary-container": "#7df4ff",
+                        "tertiary": "#ffffff",
+                        "outline-variant": "#444933",
+                        "surface-tint": "#abd600",
+                        "surface-dim": "#131313",
+                        "surface-variant": "#353534",
+                        "outline": "#8e9379",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#506600",
+                        "primary": "#ffffff",
+                        "on-error": "#690005",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary-container": "#531900",
+                        "surface-bright": "#393939",
+                        "primary-fixed-dim": "#abd600",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary": "#ffb59a",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary": "#5a1b00",
+                        "secondary-fixed": "#ffdbce",
+                        "secondary-container": "#ff5e07",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "on-secondary-fixed": "#370e00",
+                        "background": "#131313",
+                        "on-tertiary": "#00363a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "margin": "20px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Lexend"],
+                        "label-caps": ["Lexend"],
+                        "metric-huge": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-xl": ["Space Grotesk"],
+                        "body-md": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "metric-huge": ["64px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black text-on-background h-screen overflow-hidden flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-black border-b border-zinc-900">
+<div class="flex items-center gap-4 text-lime-400 active:scale-95 duration-100 hover:text-lime-300">
+<span class="material-symbols-outlined text-2xl" data-icon="menu">menu</span>
+</div>
+<div class="flex-1 flex justify-center">
+<h1 class="font-['Space_Grotesk'] font-bold uppercase tracking-tighter text-xl font-black text-lime-400 italic">PERFORMANCE LAB</h1>
+</div>
+<div class="flex items-center text-zinc-500 hover:text-lime-300 active:scale-95 duration-100">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center border border-zinc-800">
+<span class="font-label-caps text-label-caps text-on-surface">UA</span>
+</div>
+</div>
+</header>
+<!-- Main Content: Motion Tracking Canvas -->
+<main class="relative flex-1 mt-16 w-full h-full bg-black">
+<!-- Video Background Layer -->
+<div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60 mix-blend-luminosity" data-alt="Side profile of a muscular athlete performing a heavy barbell back squat in a dark, gritty performance lab with dramatic spotlights casting hard shadows on the equipment" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAmhYqq_PEk3-OutYzS_KKsR8zVtaiyLrlY0a3epd6WLHao3N2-f7ubxMkD7Ry98_nMyCZVkpbgk9j096i81i6_a1i0pO-s2LPsnkRzUB-ATdxIDehHFjpWGf20DZS7cBIkt1rdLJ9plS5D8pSNiIzHThfpzQnStgbkeq_62IyJZQie4IkzXTi5b-MpKE7yBitiRWdV2pS1iMM9EXIuwwxTru1drl5sTYKmkeiAo3fT7Q2xylwI-Oo7e479aItVUqvVTQFm3_rYy5Q');">
+</div>
+<!-- AR Overlay Layer (HUD & Lines) -->
+<div class="absolute inset-0 z-10 pointer-events-none">
+<!-- SVG Skeleton Overlay -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="xMidYMid slice">
+<!-- Hip to Knee Line -->
+<line stroke="#7df4ff" stroke-linecap="round" stroke-width="3" x1="55%" x2="45%" y1="50%" y2="70%"></line>
+<!-- Knee to Ankle Line -->
+<line stroke="#7df4ff" stroke-linecap="round" stroke-width="3" x1="45%" x2="50%" y1="70%" y2="85%"></line>
+<!-- Torso Line -->
+<line stroke="#7df4ff" stroke-linecap="round" stroke-width="3" x1="55%" x2="65%" y1="50%" y2="35%"></line>
+<!-- Joint Nodes -->
+<circle cx="65%" cy="35%" fill="#131313" r="6" stroke="#7df4ff" stroke-width="2"></circle> <!-- Shoulder -->
+<circle cx="55%" cy="50%" fill="#131313" r="8" stroke="#c3f400" stroke-width="3"></circle> <!-- Hip (Focus) -->
+<circle cx="45%" cy="70%" fill="#131313" r="6" stroke="#7df4ff" stroke-width="2"></circle> <!-- Knee -->
+<circle cx="50%" cy="85%" fill="#131313" r="6" stroke="#7df4ff" stroke-width="2"></circle> <!-- Ankle -->
+<!-- Angle Indicator (Hip) -->
+<path d="M 52% 48% A 40 40 0 0 0 58% 54%" fill="none" stroke="#c3f400" stroke-dasharray="4 2" stroke-width="2"></path>
+<text fill="#c3f400" font-family="Lexend" font-size="14" font-weight="700" x="60%" y="55%">78°</text>
+</svg>
+<!-- Status Indicator (Top Left) -->
+<div class="absolute top-margin left-margin flex items-center gap-sm bg-surface/90 border border-outline-variant rounded px-md py-sm backdrop-blur-sm">
+<div class="w-2 h-2 rounded-full bg-primary-fixed"></div>
+<span class="font-label-caps text-label-caps text-primary-fixed uppercase">Analyzing Form</span>
+</div>
+<!-- Live Metrics Box (Top Right) -->
+<div class="absolute top-margin right-margin bg-surface/90 border border-outline-variant rounded-lg p-md backdrop-blur-sm flex flex-col gap-sm">
+<div class="flex justify-between items-center gap-xl">
+<span class="font-label-caps text-label-caps text-on-surface-variant">KNEE ANGLE</span>
+<span class="font-body-md text-body-md text-on-surface">115°</span>
+</div>
+<div class="flex justify-between items-center gap-xl">
+<span class="font-label-caps text-label-caps text-primary-fixed">HIP ANGLE</span>
+<span class="font-body-md text-body-md text-primary-fixed font-bold">78°</span>
+</div>
+<div class="flex justify-between items-center gap-xl">
+<span class="font-label-caps text-label-caps text-on-surface-variant">BAR VEL.</span>
+<span class="font-body-md text-body-md text-on-surface">0.4 m/s</span>
+</div>
+</div>
+<!-- Prominent Alert Box (Center/Bottom) -->
+<div class="absolute bottom-32 left-margin right-margin md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-96 bg-surface border border-primary-fixed rounded-lg p-lg shadow-[0_0_20px_rgba(195,244,0,0.1)]">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary-fixed text-3xl" data-icon="warning">warning</span>
+<div class="flex flex-col gap-xs">
+<h2 class="font-headline-md text-headline-md text-primary-fixed uppercase tracking-tight">ADJUSTMENT NEEDED</h2>
+<p class="font-body-lg text-body-lg text-on-surface">Increase hip angle by 10° to reach target power phase.</p>
+</div>
+</div>
+<!-- Mini Correction Graph -->
+<div class="mt-md h-2 w-full bg-surface-container-highest rounded-full overflow-hidden flex relative">
+<div class="absolute top-0 left-[78%] w-[2px] h-full bg-primary-fixed z-10"></div>
+<div class="absolute top-0 left-[88%] w-[2px] h-full bg-tertiary-fixed z-10"></div>
+<div class="h-full bg-surface-variant w-full"></div>
+</div>
+<div class="flex justify-between mt-xs px-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">CURRENT: 78°</span>
+<span class="font-label-caps text-label-caps text-tertiary-fixed text-[10px]">TARGET: 88°</span>
+</div>
+</div>
+</div>
+<!-- Controls (Bottom) -->
+<div class="absolute bottom-margin left-0 w-full flex justify-center gap-lg z-20">
+<button class="w-14 h-14 rounded-full bg-surface border border-outline-variant flex items-center justify-center text-on-surface hover:border-primary-fixed hover:text-primary-fixed active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="pause">pause</span>
+</button>
+<button class="w-14 h-14 rounded-full bg-error text-on-error flex items-center justify-center hover:opacity-80 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl fill" data-icon="stop" data-weight="fill">stop</span>
+</button>
+</div>
+</main>
+</body></html>
