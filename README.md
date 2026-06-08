@@ -50,6 +50,25 @@ cd penaltyiq-flutter
 flutter pub get
 flutter run
 ```
+## 📸 App Screenshots
+
+### 🏠 Home / Main Interface
+![Home Screen](assets/screenshots/Screenshot%202026-06-08%20203426.png)
+
+### 📤 Upload & Video Analysis
+![Upload Screen](assets/screenshots/Screenshot%202026-06-08%20203446.png)
+
+### 🧠 Biomechanical Feedback Output
+![Feedback Screen](assets/screenshots/Screenshot%202026-06-08%20203502.png)
+
+### 📊 Score Breakdown View
+![Score Screen](assets/screenshots/Screenshot%202026-06-08%20203523.png)
+
+### 📱 Mobile UI 
+![Demo 1](assets/screenshots/WhatsApp%20Image%202026-06-08%20at%208.31.50%20PM%20(1).jpeg)
+
+### 📱 Mobile UI
+![Demo 2](assets/screenshots/WhatsApp%20Image%202026-06-08%20at%208.31.50%20PM.jpeg)
 
 ## 🔮 Roadmap & Future Improvements
 *   **3D Pose Estimation:** Transitioning from 2D coordinate extraction to 3D depth reconstruction to eliminate foreshortening (depth loss) on non-sagittal camera angles.
